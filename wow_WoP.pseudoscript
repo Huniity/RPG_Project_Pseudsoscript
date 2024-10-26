@@ -1,0 +1,37 @@
+importar Main como ini
+
+programa = ini.Main()
+
+
+funcao start_game():
+    retorne("                            WRATH OF THE PSEUDO
+            Emerging from the Caverns of Time, the fierce champion of Stormwind felt a chill in the air. 
+            Dark, corrupted whispers echoed in his mind, taunting him with the Lich King's sinister promise: 
+                                    
+                                    'You cannot escape your fate.'
+
+            Determined to defy this darkness, he ventured toward Icecrown Citadel, a fortress of despair looming against the horizon. 
+            Shadows loomed over the frozen landscape, and anguished cries echoed through the biting wind. 
+            As he pressed on, the Lich King's voice grew louder, urging him to succumb to despair.
+            As the shadows receded, he stood in the silence that followed, feeling the weight of his choices. 
+            It was time for him to choose his path, knowing that the future of Azeroth rested in his hands.
+            ")
+
+    entrada("It\'s time for you to choose your path Champion", opcao)
+        se opcao == 1
+            imprime(ini.Main.class_warrior())
+                start_adventure()
+        se opcao == 2
+            imprime(ini.Main.class_mage())
+                start_adventure()
+        se opcao == 3
+            imprime(ini.Main.class_death_knight())
+                start_adventure()
+
+
+funcao start_adventure()
+    imprime("With resolve forged in fire, the champion steps forward—the adventure begins now!")
+        entrada("Where should we start to go?", paths)
+        imprime(ini.Main.path_choices())
+
+imprime(start_game())

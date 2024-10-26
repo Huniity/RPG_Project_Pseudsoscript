@@ -1,0 +1,76 @@
+importar WarriorClass como warrior
+importar MageClass como mage
+importar DeathKnightClass como dk
+importar Items como item
+importar Realms como realm
+
+
+modelo Main:
+
+
+Main.player_health = 1
+Main.player_atk = 1
+Main.player_resist = 1
+Main.player_lvl = 1
+Main.player_Xp = 1
+
+class_war = warrior.WarriorClass()
+class_mage = mage.MageClass()
+class_dk = dk.DeathKnightClass()
+all_item = item.Items()
+all_realms = realm.Realms()
+
+
+    funcao class_warrior(opcao)
+        imprime("Embrace the warrior\'s path: strength is your shield, fury your blade!")
+            class_war.WarriorClass()
+                Main.player_health = class_war.WarriorClass.war_health
+                Main.player_atk = class_war.WarriorClass.war_atk
+                Main.player_resist = class_war.WarriorClass.war_resist
+                Main.player_lvl = class_war.WarriorClass.war_lvl
+                Main.player_xp = class_war.WarriorClass.war_Xp
+                    imprime("It\'s time Warrior, we now have to fight the corruption of this lands!")
+                    
+
+    funcao class_mage(opcao)
+        imprime("Embrace the mage\'s power: bend the arcane, unleash chaos!")
+            class_mage.MageClass()
+                Main.player_health = class_mage.MageClass.mage_health
+                Main.player_atk = class_mage.MageClass.mage_atk
+                Main.player_resist = class_mage.MageClass.mage_resist
+                Main.player_lvl = class_mage.MageClass.mage_lvl
+                Main.player_xp = class_mage.MageClass.mage_Xp
+                    imprime("It\'s time Mage, we now have to fight the corruption of this lands!")
+
+
+    funcao class_death_knight(opcao) 
+        imprime("Rise from the shadows: as a death knight, you are the fury of the grave!")
+            class_dk.DeathKnightClass()
+                Main.player_health = class_dk.DeathKnightClass.dk_health
+                Main.player_atk = class_dk.DeathKnightClass.dk_atk
+                Main.player_resist = class_dk.DeathKnightClass.dk_resist
+                Main.player_lvl = class_dk.DeathKnightClass.dk_lvl
+                Main.player_xp = class_dk.DeathKnightClass.dk_Xp
+                    imprime("It\'s time DeathKnight, we now have to fight the corruption of this lands!")
+
+    
+    funcao path_choices(path)
+
+    find_chance = aleatorio(1, 100)
+    
+        se path NAO numero
+            crash("Fellow friend, you have to choose an option from the ones below")
+        se path = 1
+            se find_chance <= 20
+                imprime(all_item.Items())
+                imprime(all_realms.Realms())
+
+        se path = 2
+            se find_chance <=50
+                imprime(all_items.Items())
+                imprime(all_realms.Realms())
+        
+
+
+
+        
