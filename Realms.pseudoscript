@@ -1,0 +1,49 @@
+modelo Realms()
+    construtor()
+
+    progress_npc = 0
+    progress_boss = 0
+    realm = 0
+
+
+    funcao realm_trisfal_glades()
+        realm = 1
+        enquanto progress_npc NAO 3
+            enquanto progress_boss NAO 1
+
+            Items.boss_drops()
+
+    funcao realm_black_temple()
+        realm = 2
+        enquanto progress_npc NAO 3
+            enquanto progress_boss NAO 1
+
+            Items.boss_drops()
+
+    funcao realm_azjol_nerub()
+        realm = 3
+        enquanto progress_npc NAO 3
+            enquanto progress_boss NAO 1
+
+            Items.boss_drops()
+
+    funcao realm_frozen_throne()
+        realm = 4
+        Main.player_resist = Main.player_resist - 20
+        Main.player_health = Main.player_health - 20
+            imprime("You\'re not welcome here miserable human. (- 20 Resist | - 20 Health)")
+
+            enquanto progress_boss NAO 1
+
+            Items.boss_drops()
+
+
+    funcao all_npc_trisfal()
+        
+
+
+    funcao all_npc_black_temple()
+
+    funcao all_npc_azjol_nerub()
+
+    funcao all_bosses()

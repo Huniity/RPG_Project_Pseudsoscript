@@ -31,7 +31,14 @@ funcao start_game():
 
 funcao start_adventure()
     imprime("With resolve forged in fire, the champion steps forward—the adventure begins now!")
-        entrada("Where should we start to go?", paths)
-        imprime(ini.Main.path_choices())
+        entrada("Where should we start to go?", path)
+            enquanto path NAO numero
+                crash("Fellow friend, you have to choose an option from the ones below")
+            imprime(ini.Main.path_choices())
+        realm_choice()
+
+funcao realm_choice()
+    entrada("It\'s time to start our battle against the darkness fellow friend. Where should we go?", realm)
+
 
 imprime(start_game())

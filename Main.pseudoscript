@@ -6,13 +6,13 @@ importar Realms como realm
 
 
 modelo Main:
-
+    construtor():
 
 Main.player_health = 1
 Main.player_atk = 1
 Main.player_resist = 1
 Main.player_lvl = 1
-Main.player_Xp = 1
+Main.player_xp = 1
 
 class_war = warrior.WarriorClass()
 class_mage = mage.MageClass()
@@ -55,20 +55,21 @@ all_realms = realm.Realms()
 
     
     funcao path_choices(path)
-
-    find_chance = aleatorio(1, 100)
     
-        se path NAO numero
-            crash("Fellow friend, you have to choose an option from the ones below")
         se path = 1
-            se find_chance <= 20
-                imprime(all_item.Items())
-                imprime(all_realms.Realms())
-
+            imprime("Path of Life choosen.")
+            imprime(all_item.Items(pathdrops()))
+            imprime(all_realms.Realms())
+                
         se path = 2
-            se find_chance <=50
-                imprime(all_items.Items())
-                imprime(all_realms.Realms())
+            imprime("Path of Darkness.")
+            imprime(all_item.Items(pathdrops()))
+            imprime(all_realms.Realms())
+                
+        se path = 3
+            imprime("Path of Strengh.")
+            imprime(all_item.Items(pathdrops()))
+            imprime(all_realms.Realms())
         
 
 

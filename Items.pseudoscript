@@ -1,0 +1,90 @@
+modelo Items()
+    construtor(nome, efeito, valor, tipo):
+
+        Items.nome = nome
+        Items.efeito = efeito
+        Items.valor = valor
+        Items.tipo = tipo
+
+        health_pot = Item(nome="Crimson Flask", efeito="Health Regen", valor=20, tipo="Poção")
+        attack_buff = Item(nome="Warrior\'s Spirit", efeito="Attack Power Buff", valor=15, tipo="Buff")
+        poison_debuff = Item(nome="Toxin of Torment", efeito="Poison Debuff", valor=20, tipo="Debuff")
+        warglaive_of_azzinoth = Item(nome="Warglaives of Azzinoth", efeito="Twin Blades of Azzinoth", valor=35, tipo="Legendary")
+        sylvanas_crystal = Item(nome="Lady Sylvanas Crystal", efeito="Gem", valor=35, tipo="Legendary")
+        anubarak_ring = Item(nome="Anub\'Arak Ring", efeito="Ring", valor=35, tipo="Legendary")
+        lich_king_helm = Item(nome="Lich King Crown", efeito="Helm", valor=35, tipo="Legendary")
+
+
+        funcao pathdrops(path):
+            drop_chance = aleatorio(1, 100)
+                
+                se path = 1    
+                    se drop_chance <= 60
+                        imprime("You feel rejuvenated! {health_pot}")
+                    se drop_chance <= 30
+                        imprime("Dark paths aren\'t always a good choice. That spider is poisonous! {poison_debuff}")
+                    se drop_chance <= 20
+                        imprime("You feel strong and brave! {attack_buff}")
+
+                se path = 2    
+                    se drop_chance <= 30
+                        imprime("You feel rejuvenated! {health_pot}")
+                    se drop_chance <= 60
+                        imprime("Dark paths aren\'t always a good choice. That spider is poisonous! {poison_debuff}")
+                    se drop_chance <= 20
+                        imprime("You feel strong and brave! {attack_buff}")
+
+                se path = 3    
+                    se drop_chance <= 30
+                        imprime("You feel rejuvenated! {health_pot}")
+                    se drop_chance <= 30
+                        imprime("You feel weak! {poison_debuff}")
+                    se drop_chance <= 50
+                        imprime("You feel strong and brave! {attack_buff}")
+
+        
+        funcao boss_drops():
+            drop_chance = aleatorio(1, 100)
+
+            se Realms.realm_black_temple().realm = 2
+                se drop_chance <= 40
+                    imprime("Forged in the fires of chaos, the Warglaives of Azzinoth embody the fury of the Betrayer himself. Wield these twin blades, and unleash the tempest of vengeance upon your foes, 
+                    for they are the harbingers of destruction and the legacy of a fallen hero. {warglaive_of_azzinoth}")
+                        Main.player_atk = Main.player_atk + 30
+
+                imprime("Congratulations, fearless champion! You have faced the Betrayer himself and emerged triumphant, extinguishing the flame of chaos he sought to unleash upon the world. 
+                Your unmatched valor and unwavering resolve have ensured that Illidan\'s legacy of darkness is forever laid to rest. 
+                Let your name be heralded as the one who defied fate!")
+
+            se Realms.realm_azjol_nerub().realm = 3
+                se drop_chance <= 40
+                    imprime("Bound by eternal frost, this ring echoes with the whispers of the Scourge. 
+                    Worn by Anub\'arak himself, it grants dominion over darkness and a heart as cold as the Frozen Throne. {anubarak_ring}")
+                        Main.player_health = Main.player_health + 35
+
+                imprime("Bravo, noble champion! You have vanquished the ancient crypt lord, silencing the whispers of the grave and freeing the realm from his dark dominion. 
+                Your strength and bravery have shattered the bonds of terror, ensuring that the shadows of Anub\'arak will haunt us no more!")
+
+            se Realms.realm_trisfal_glades().realm = 1
+                se drop_chance <= 40
+                    imprime("Infused with the wailing spirits of the Forsaken, this crystal pulses with the banshee queen\'s relentless will. 
+                    Hold it close, and feel the shadows of vengeance echo within your soul. {sylvanas_crystal}")
+                        Main.player_resist = Main.player_resist + 15
+
+                imprime("Congratulations, brave champion! You have shattered the will of the Banshee Queen, silencing her echoes of vengeance. 
+                Your valor has restored hope to the realm, and your name shall be etched in the annals of history as the one who dared to defy darkness!")
+            
+            se Realms.realm_frozen_throne().realm = 4
+                se drop_chance <= 40
+                    imprime("Cursed with the chill of the Frozen Throne, this artifact holds the wrath of the Lich King himself. 
+                    Wield it, and command the icy darkness that claims the hearts of even the bravest souls. {lich_king_helm}")
+                        Main.player_resist = Main.player_resist + 30
+                        Main.player_health = Main.player_health + 30
+                        Main.player_xp = Main.player_xp + 150
+
+                imprime("Hail, champion of light! You have faced the embodiment of death itself and emerged victorious, breaking the chains of despair that bound the realm. 
+                Your unparalleled courage and unwavering resolve have vanquished the Lich King, ensuring that his icy grip shall never return. 
+                Let your name be forever remembered as the savior who stood against the darkness!")
+
+        
+
