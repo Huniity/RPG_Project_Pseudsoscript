@@ -3,6 +3,7 @@ importar MageClass como mage
 importar DeathKnightClass como dk
 importar Items como item
 importar Realms como realm
+importar Npc como npcs
 
 
 modelo Main:
@@ -19,6 +20,7 @@ class_mage = mage.MageClass()
 class_dk = dk.DeathKnightClass()
 all_item = item.Items()
 all_realms = realm.Realms()
+all_npc = npcs.Npc()
 
 
     funcao class_warrior(opcao)
