@@ -1,49 +1,146 @@
 modelo Realms()
     construtor()
 
-    progress_npc = 0
-    progress_boss = 0
-    realm = 0
-
-
     funcao realm_trisfal_glades()
+        pos_npc = 0
+        pos_boss = 0
         realm = 1
-        enquanto progress_npc NAO 3
-            enquanto progress_boss NAO 1
+        progress_npc = 0
+        progress_boss = 0
 
-            Items.boss_drops()
+        enquanto progress_boss NAO 1
+            enquanto progress_npc NAO 3
+            combate_geral()
+        combate_geral_boss()
+        Item.boss_drops()
+
+        entrada("The realm of Trisfal has been cleansed from Corruption. Should we go to the next one?", option)
+            se option EM ["YES", "Y"]
+                realm_black_temple()
+            se option EM ["NO", "N"]
+                realm_choice()
 
     funcao realm_black_temple()
+        pos_npc = 3
+        pos_boss = 1
         realm = 2
-        enquanto progress_npc NAO 3
-            enquanto progress_boss NAO 1
+        progress_npc = 0
+        progress_boss = 0
 
-            Items.boss_drops()
+        enquanto progress_boss NAO 1
+            enquanto progress_npc NAO 3
+            combate_geral()
+        combate_geral_boss()
+        Item.boss_drops()
+
+        entrada("The realm of Black Temple has been cleansed from Corruption. Should we go to the next one?", option)
+            se option EM ["YES", "Y"]
+                realm_azjol_nerub()
+            se option EM ["NO", "N"]
+                realm_choice()
+
 
     funcao realm_azjol_nerub()
+        pos_npc = 6
+        pos_boss = 2
         realm = 3
-        enquanto progress_npc NAO 3
-            enquanto progress_boss NAO 1
+        progress_npc = 0
+        progress_boss = 0
 
-            Items.boss_drops()
+        enquanto progress_boss NAO 1
+            enquanto progress_npc NAO 3
+            combate_geral()
+        combate_geral_boss()
+        Item.boss_drops()
+
+        entrada("The realm of Azjol Nérub has been cleansed from corruption. Should we go to the next one?", option)
+            se option EM ["YES", "Y"]
+                realm_frozen_throne()
+            se option EM ["NO", "N"]
+                realm_choice()
 
     funcao realm_frozen_throne()
+        pos_boss = 3
         realm = 4
+        progress_boss = 0
         Main.player_resist = Main.player_resist - 20
         Main.player_health = Main.player_health - 20
-            imprime("You\'re not welcome here miserable human. (- 20 Resist | - 20 Health)")
-
-            enquanto progress_boss NAO 1
-
-            Items.boss_drops()
-
-
-    funcao all_npc_trisfal()
+    
+        imprime("Lich King: You\'re not welcome here miserable human. (- 20 Resist | - 20 Health)")
+        imprime("Lich King: It\'s time for your to be deafeated")
+        imprime("Lich King: Your soul belongs to the Ice Throne. Don\'t resist or pay the price!")
         
+        enquanto progress_boss NAO 1
+            combate_geral_boss()
+            Item.boss_drops()
+
+            imprime("Congratulation Champion, you\'ve defeated the Lich King. It seems that the darkness has been cleansed
+                    in this region. Please meet me at Orgrimmar. We should talk to the council right away. For the Horde!")
 
 
-    funcao all_npc_black_temple()
 
-    funcao all_npc_azjol_nerub()
+    funcao combate_geral()
+    pos_npc = 0
+    npc_atk = Npc.all_npcs[pos]["dano"]
+    npc_health = Npc.all_npcs[pos]["health"]
+    player_atk = Main.player_atk
+    player_health = Main.player_health
 
-    funcao all_bosses()
+    entrada("What should we do? Attack or leave?", option)
+        se option EM ["Attack"]
+            enquanto player_health > 0 and npc_health > 0:
+                imprime("Champion: Take that monster!")
+                imprime("Strong attack: {player_atk}!")
+                    npc_health -= player_atk
+                        se npc_health <= 0:
+                            imprime("You did good Champion! You defeated {Npc.all_npc[pos_npc]["nome"]}!")
+                                Main.player_xp += 35
+                                progress_npc += 1
+                                pos += 1
+
+                        se player_health <= 0:
+                            print("Defeated!")
+                                Main.player_life -= 1
+                                    se Main.player_life = 0
+                                        imprime("You lost. Try again champion")
+                                    realm.choice()
+                        
+                imprime("{Npc.all_npc[pos_npc]["nome"]}: It\'s time to suffer!")
+                imprime("{Npc.all_npc[pos_npc]["ataques"]}! {Npc.all_npc[pos_npc]["dano"]} Dmg. have been done to you!")
+                player_health -= npc_atk
+            se option EM ["Leave"]
+            real.choice()
+    
+    funcao combate_geral_boss()
+
+    pos_boss = 0
+    boss_atk = Npc.all_boss[pos_boss]["dano"]
+    boss_health = Npc.all_boss[pos_boss]["health"]
+    player_atk = Main.player_atk
+    player_health = Main.player_health
+
+    
+    entrada("What should we do? Attack or leave?", option)
+        se option EM ["Attack"]
+            enquanto player_health > 0 and boss_health > 0:
+                imprime("Champion: Take that monster!")
+                imprime("Strong attack: {player_atk}!")
+                    boss_health -= player_atk
+                        se boss_health <= 0:
+                            imprime("You did good Champion! You defeated {Npc.all_boss[pos_boss]["nome"]}!")
+                                Main.player_xp += 35
+                                progress_npc += 1
+                                pos += 1
+
+                        se player_health <= 0:
+                            print("Defeated!")
+                                Main.player_life -= 1
+                                    se Main.player_life = 0
+                                        imprime("You lost. Try again champion")
+                                    realm.choice()
+                        
+                imprime("{Npc.all_boss[pos_boss]["nome"]}: It\'s time to suffer!")
+                imprime("{Npc.all_boss[pos_boss]["ataques"]}! {Npc.all_boss[pos_boss]["dano"]} Dmg. have been done to you!")
+                player_health -= npc_atk
+            se option EM ["Leave"]
+            real.choice()

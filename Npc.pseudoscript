@@ -1,99 +1,45 @@
+importar Main como main
+
 modelo Npc:
-    construtor(nome, classe, descricao, ataques, nivel):
+    construtor(nome, health, ataques):
         Npc.nome = nome
-        Npc.classe = classe
-        Npc.descricao = descricao
-        Npc.ataques = ataques  
-        Npc.nivel = nivel
+        Npc.health = health
+        Npc.ataques = ataques
+        
+        
 
-    # def __repr__(self):
     #    return f"NPC({self.nome}, {self.classe}, {self.descricao}, {self.ataques}, {self.nivel})"
-    npcs_trisfal_glades = [
-            Npc("Lobo Sanguinário", "Guerreiro", "Um feroz lobo que protege o território.", 
-                [{"nome": "Ataque rápido", "dano": 8}, {"nome": "Mordida sangrenta", "dano": 12}], 5),
-            Npc("Mago Sombrio", "Mago", "Um conjurador que manipula as sombras.", 
-                [{"nome": "Bolas de fogo", "dano": 15}, {"nome": "Invisibilidade", "dano": 0}], 7),
-            Npc("Guerreiro das Trevas", "Guerreiro", "Um guerreiro imbuído com magia sombria.", 
-                [{"nome": "Golpe devastador", "dano": 20}, {"nome": "Sombra cortante", "dano": 10}], 6),
-                    ]
-    
-    npcs_black_temple = [
-            Npc("Lobo Sanguinário", "Guerreiro", "Um feroz lobo que protege o território.", 
-                [{"nome": "Ataque rápido", "dano": 8}, {"nome": "Mordida sangrenta", "dano": 12}], 5),
-            Npc("Mago Sombrio", "Mago", "Um conjurador que manipula as sombras.", 
-                [{"nome": "Bolas de fogo", "dano": 15}, {"nome": "Invisibilidade", "dano": 0}], 7),
-            Npc("Guerreiro das Trevas", "Guerreiro", "Um guerreiro imbuído com magia sombria.", 
-                [{"nome": "Golpe devastador", "dano": 20}, {"nome": "Sombra cortante", "dano": 10}], 6),
-                    ]
-
-    npcs_azjol_nerub = [
-            Npc("Lobo Sanguinário", "Guerreiro", "Um feroz lobo que protege o território.", 
-                [{"nome": "Ataque rápido", "dano": 8}, {"nome": "Mordida sangrenta", "dano": 12}], 5),
-            Npc("Mago Sombrio", "Mago", "Um conjurador que manipula as sombras.", 
-                [{"nome": "Bolas de fogo", "dano": 15}, {"nome": "Invisibilidade", "dano": 0}], 7),
-            Npc("Guerreiro das Trevas", "Guerreiro", "Um guerreiro imbuído com magia sombria.", 
-                [{"nome": "Golpe devastador", "dano": 20}, {"nome": "Sombra cortante", "dano": 10}], 6),
+    all_npcs = [
+            ################## TRISFAL GLADES ###################
+            Npc("nome": "Deathstalker", "health": 250,
+                [{"ataques": "Mordida sangrenta", "dano": 12}]),
+            Npc("nome": "Wretched",
+                [{"ataques": "Bolas de fogo", "dano": 15}]),
+            Npc("nome": "Plague Hound",
+                [{"ataques": "Sombra cortante", "dano": 10}]),
+            ################## BLACK TEMPLE ###################
+            Npc("nome": "Supremus", "health": 250,
+                [{"ataques": "Ataque rápido", "dano": 8}]),
+            Npc("nome": "Illidari Counceler", "health": 250, 
+                [{"ataques": "Bolas de fogo", "dano": 15}]),
+            Npc("nome": "M\'uru", "health": 250,
+                [{"ataques": "Golpe devastador", "dano": 20}]),
+            ################## AZJOL NÉRUB ###################
+            Npc("nome": "Nerub\'Enkan", "health": 250,
+                [{"ataques": "Mordida sangrenta", "dano": 12}]),
+            Npc("nome": "Skeletal Usher", "health": 250,
+                [{"ataques": "Bolas de fogo", "dano": 15}]),
+            Npc("nome": "Elder Nadox", "health": 250,
+                [{"ataques": "Golpe devastador", "dano": 20}]),
                     ]
 
-modelo Boss:
-    construtor(nome, classe, descricao, ataques, nivel):
-        Boss.nome = nome
-        Boss.classe = classe
-        Boss.descricao = descricao
-        Boss.ataques = ataques
-        Boss.nivel = nivel
-
-        bosses = [
-            Boss("Senhor das Sombras", "Ladrão", "Um mestre da furtividade que controla as trevas.", 
-                [{"nome": "Ataque furtivo", "dano": 30}, {"nome": "Sombra mortal", "dano": 20}], 10),
-            Boss("Senhor das Sombras", "Ladrão", "Um mestre da furtividade que controla as trevas.", 
-                [{"nome": "Ataque furtivo", "dano": 30}, {"nome": "Sombra mortal", "dano": 20}], 10),
-            Boss("Guardião de Gelo", "Paladino", "Um gigante de gelo que defende o reino.", 
-                [{"nome": "Escudo de gelo", "dano": 0}, {"nome": "Congelamento", "dano": 18}], 12),
-                ]
-
-        boss_final = Boss("Lich Rei", "Morte", "O mestre dos mortos, um ser de pura escuridão.", 
-                  [{"nome": "Grito da morte", "dano": 50}, {"nome": "Sussurros gelados", "dano": 30}], 20)
-
-   # def __repr__(self):
-    #    return f"Boss({self.nome}, {self.classe}, {self.descricao}, {self.ataques}, {self.nivel})"
-
-   # def atacar(self):
-   #     ataque = random.choice(self.ataques)
-   #     dano = ataque["dano"]
-   #     print(f"{self.nome} usa {ataque['nome']} e causa {dano} de dano!")
-   #     return dano
-
-# Lista de NPCs
-# Lista de Bosses
-
-
-# Boss Final
-    funcao combate()
-# Função de combate
-print(f"Você enfrentou {oponente.nome}!")
-    
-    while jogador.vida > 0 and oponente.vida > 0:
-        # Turno do jogador
-        dano_jogador = jogador.atacar()
-        oponente.receber_dano(dano_jogador)
-        if oponente.vida <= 0:
-            print(f"Parabéns! Você derrotou {oponente.nome}!")
-            break
-
-        # Turno do oponente
-        dano_oponente = oponente.atacar()
-        jogador.receber_dano(dano_oponente)
-        if jogador.vida <= 0:
-            print("Você foi derrotado!")
-            break
-
-# Criando o jogador
-jogador = Jogador("Herói", 100)
-
-# Iniciando o combate com um NPC, um Boss e o Boss Final
-print("Combate com NPC:")
-combate(jogador, npcs[0])
-
-print("\nCombate com Boss:")
-combate(jogador, bosses[0])
+    all_boss = [
+            Boss("nome": "Lady Sylvanas Windstalker", "health": 350,
+                [{"ataques": "Sombra mortal", "dano": 20}]),
+            Boss("nome": "Illidan Stormrage", "health": 350,
+                [{"ataques": "Ataque furtivo", "dano": 30}]),
+            Boss("nome": "Anub\'Arak", "health": 350,
+                [{"ataques": "Escudo de gelo", "dano": 0}]),
+            Boss("nome": "Lich king", "health": 450,
+                  [{"ataques": "Grito da morte", "dano": 50}])
+            ]

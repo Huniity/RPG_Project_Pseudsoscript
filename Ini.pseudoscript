@@ -1,6 +1,7 @@
-importar Main como ini
+importar Main como start
 
-programa = ini.Main()
+programa = start.Main()
+
 
 
 funcao start_game():
@@ -19,13 +20,13 @@ funcao start_game():
 
     entrada("It\'s time for you to choose your path Champion", opcao)
         se opcao == 1
-            imprime(ini.Main.class_warrior())
+            imprime(ini.Character.class_warrior())
                 start_adventure()
         se opcao == 2
-            imprime(ini.Main.class_mage())
+            imprime(ini.Character.class_mage())
                 start_adventure()
         se opcao == 3
-            imprime(ini.Main.class_death_knight())
+            imprime(ini.Character.class_death_knight())
                 start_adventure()
 
 
