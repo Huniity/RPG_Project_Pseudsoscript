@@ -1,3 +1,5 @@
+importar Npc
+
 modelo Realms()
     construtor()
 
