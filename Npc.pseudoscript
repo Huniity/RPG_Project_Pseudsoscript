@@ -5,10 +5,9 @@ modelo Npc:
         Npc.nome = nome
         Npc.health = health
         Npc.ataques = ataques
+        Npc.dano = dano
         
         
-
-    #    return f"NPC({self.nome}, {self.classe}, {self.descricao}, {self.ataques}, {self.nivel})"
     all_npcs = [
             ################## TRISFAL GLADES ###################
             Npc("nome": "Deathstalker", "health": 250,

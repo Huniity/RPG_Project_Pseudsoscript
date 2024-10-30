@@ -1,7 +1,9 @@
 importar Main como start
+importar Realms como realm
+
 
 programa = start.Main()
-
+all_realms = realm.Realms()
 
 
 funcao start_game():
@@ -39,7 +41,25 @@ funcao start_adventure()
         realm_choice()
 
 funcao realm_choice()
-    entrada("It\'s time to start our battle against the darkness fellow friend. Where should we go?", realm)
+    entrada("It\'s time to start our battle against the darkness fellow friend. Where should we go?
+            1. Realm of Trisfal Glades, land of the undead and Lady Sylvanas.
+            2. Realm of Black Temple, land of the fel corruption and rein of Illidan.
+            3. Realm of Azjol Nérub, land of the plague and nest of Anub\'Arak.", realm)
+    se realm == 1
+        imprime("Lady Sylvanas: Welcome to the shadowed depths of my domain. 
+        Here, life fades, loyalty is tested, and only the strongest wills endure. 
+        Tread lightly, for I am the warden of the forgotten, and here... the weak find no refuge.")
+        all_realms.realm_trisfal_glades()
+    se realm == 2
+        imprime("You dare to step into the shadows with me? 
+        Know this: I am neither hero nor villain—I am the blade in the darkness, the relentless fury that awaits. 
+        Here, only those unbroken by fire and pain may stand… the rest will be scattered like ash.")
+        all_realms.realm_black_temple()
+    se realm == 3
+        imprime("Welcome to the kingdom of ice and death. Beneath the frozen earth, my crypt lies waiting, 
+        where the chill of the grave embraces all who enter. Here, only darkness reigns, 
+        and the living are but fleeting visitors in my eternal domain.")
+        all_realms.realm_azjol_nerub()
 
 
 imprime(start_game())

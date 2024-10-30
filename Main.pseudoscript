@@ -74,5 +74,84 @@ all_npc = npcs.Npc()
         
 
 
+    funcao combate_geral()
+    base_health = Main.player_health
+    pos_npc = 0
+    npc_atk = Npc.all_npcs[pos_npc]["dano"]
+    npc_health = Npc.all_npcs[pos_npc]["health"]
+    player_atk = Main.player_atk
+    player_health = Main.player_health
 
+    entrada("What should we do? Attack or leave?", option)
+        se option EM ["Attack"]
+            enquanto player_health > 0 and npc_health > 0:
+                imprime("Champion: Take that monster!")
+                imprime("Strong attack: {player_atk}!")
+                    npc_health -= player_atk
+                        se npc_health <= 0:
+                            imprime("You did good Champion! You defeated {Npc.all_npc[pos_npc]["nome"]}!")
+                                Main.player_xp += 35
+                                level_up()
+                                progress_npc += 1
+                                pos_npc += 1
+                                Main.player_health = base_health
+
+                        se player_health <= 0:
+                            print("Defeated!")
+                                Main.player_life -= 1
+                                    se Main.player_life = 0
+                                        imprime("You lost. Try again champion")
+                                        Main.player_health = base_health
+                                    realm_choice()
+                        
+                imprime("{Npc.all_npc[pos_npc]["nome"]}: It\'s time to suffer!")
+                imprime("{Npc.all_npc[pos_npc]["ataques"]}! {Npc.all_npc[pos_npc]["dano"]} Dmg. have been done to you!")
+                player_health -= npc_atk
+            se option EM ["Leave"]
+            realm_choice()
+    
+    funcao combate_geral_boss()
+
+    pos_boss = 0
+    boss_atk = Npc.all_boss[pos_boss]["dano"]
+    boss_health = Npc.all_boss[pos_boss]["health"]
+    player_atk = Main.player_atk
+    player_health = Main.player_health
+
+    
+    entrada("What should we do? Attack or leave?", option)
+        se option EM ["Attack"]
+            enquanto player_health > 0 and boss_health > 0:
+                imprime("Champion: Take that monster!")
+                imprime("Strong attack: {player_atk}!")
+                    boss_health -= player_atk
+                        se boss_health <= 0:
+                            imprime("You did good Champion! You defeated {Npc.all_boss[pos_boss]["nome"]}!")
+                                Main.player_xp += 45
+                                    level_up()
+                                progress_npc += 1
+                                pos_boss += 1
+                                Main.player_health = base_health
+
+                        se player_health <= 0:
+                            print("Defeated!")
+                                Main.player_life -= 1
+                                    se Main.player_life = 0
+                                        imprime("You lost. Try again champion")
+                                        Main.player_health = base_health
+                                    realm_choice()
+                        
+                imprime("{Npc.all_boss[pos_boss]["nome"]}: It\'s time to suffer!")
+                imprime("{Npc.all_boss[pos_boss]["ataques"]}! {Npc.all_boss[pos_boss]["dano"]} Dmg. have been done to you!")
+                player_health -= npc_atk
+            se option EM ["Leave"]
+            realm_choice()
+
+    funcao level_up()
+        se Main.player_xp >= 110
+            imprime("You feel stronger! The power of the Taurens is empowering you! (LEVEL UP)")
+            Main.player_atk = Main.player_atk * 1.25
+            Main.player_health = Main.player_health * 1.50
+            Main.player_resist = Main.player_resist * 1.35
+        continua()
         

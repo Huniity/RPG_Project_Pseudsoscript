@@ -6,13 +6,13 @@ modelo Items()
         Items.valor = valor
         Items.tipo = tipo
 
-        health_pot = Item(nome="Crimson Flask", efeito="Health Regen", valor=20, tipo="Poção")
-        attack_buff = Item(nome="Warrior\'s Spirit", efeito="Attack Power Buff", valor=15, tipo="Buff")
-        poison_debuff = Item(nome="Toxin of Torment", efeito="Poison Debuff", valor=20, tipo="Debuff")
-        warglaive_of_azzinoth = Item(nome="Warglaives of Azzinoth", efeito="Twin Blades of Azzinoth", valor=35, tipo="Legendary")
-        sylvanas_crystal = Item(nome="Lady Sylvanas Crystal", efeito="Gem", valor=35, tipo="Legendary")
-        anubarak_ring = Item(nome="Anub\'Arak Ring", efeito="Ring", valor=35, tipo="Legendary")
-        lich_king_helm = Item(nome="Lich King Crown", efeito="Helm", valor=35, tipo="Legendary")
+        Items.health_pot = Item(nome="Crimson Flask", efeito="Health Regen", valor=20, tipo="Poção")
+        Items.attack_buff = Item(nome="Warrior\'s Spirit", efeito="Attack Power Buff", valor=15, tipo="Buff")
+        Items.poison_debuff = Item(nome="Toxin of Torment", efeito="Poison Debuff", valor=20, tipo="Debuff")
+        Items.warglaive_of_azzinoth = Item(nome="Warglaives of Azzinoth", efeito="Twin Blades of Azzinoth", valor=35, tipo="Legendary")
+        Items.sylvanas_crystal = Item(nome="Lady Sylvanas Crystal", efeito="Gem", valor=35, tipo="Legendary")
+        Items.anubarak_ring = Item(nome="Anub\'Arak Ring", efeito="Ring", valor=35, tipo="Legendary")
+        Items.lich_king_helm = Item(nome="Lich King Crown", efeito="Helm", valor=35, tipo="Legendary")
 
 
         funcao pathdrops(path):
@@ -20,27 +20,27 @@ modelo Items()
                 
                 se path = 1    
                     se drop_chance <= 60
-                        imprime("You feel rejuvenated! {health_pot}")
+                        imprime("You feel rejuvenated! {Items.health_pot}")
                     se drop_chance <= 30
-                        imprime("Dark paths aren\'t always a good choice. That spider is poisonous! {poison_debuff}")
+                        imprime("Dark paths aren\'t always a good choice. That spider is poisonous! {Items.poison_debuff}")
                     se drop_chance <= 20
-                        imprime("You feel strong and brave! {attack_buff}")
+                        imprime("You feel strong and brave! {Items.attack_buff}")
 
                 se path = 2    
                     se drop_chance <= 30
-                        imprime("You feel rejuvenated! {health_pot}")
+                        imprime("You feel rejuvenated! {Items.health_pot}")
                     se drop_chance <= 60
-                        imprime("Dark paths aren\'t always a good choice. That spider is poisonous! {poison_debuff}")
+                        imprime("Dark paths aren\'t always a good choice. That spider is poisonous! {Items.poison_debuff}")
                     se drop_chance <= 20
-                        imprime("You feel strong and brave! {attack_buff}")
+                        imprime("You feel strong and brave! {Items.attack_buff}")
 
                 se path = 3    
                     se drop_chance <= 30
-                        imprime("You feel rejuvenated! {health_pot}")
+                        imprime("You feel rejuvenated! {Items.health_pot}")
                     se drop_chance <= 30
-                        imprime("You feel weak! {poison_debuff}")
+                        imprime("You feel weak! {Items.poison_debuff}")
                     se drop_chance <= 50
-                        imprime("You feel strong and brave! {attack_buff}")
+                        imprime("You feel strong and brave! {Items.attack_buff}")
 
         
         funcao boss_drops():
